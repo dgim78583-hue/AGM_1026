@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>배달의민족 | 처음이거나 오랜만이라면, 웰컴 혜택 18,990원</title>
+<meta name="description" content="배민 첫 주문 10,000원 할인 + 배민클럽 첫 달 무료(3,990원) + 친구 초대 시 둘 다 5,000원. 웰컴 혜택 18,990원을 앱에서 받아가세요.">
+<!-- 공유용 OG 태그 (카카오톡/SNS 공유 시 노출) -->
+<meta property="og:title" content="배민 웰컴 혜택 18,990원">
+<meta property="og:description" content="첫 주문 10,000원 + 배민클럽 첫 달 무료 + 친구 초대 5,000원">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --mint: #2AC1BC;
+    --mint-dark: #1FA8A3;
+    --mint-light: #E6F8F7;
+    --ink: #1D1D1F;
+    --gray-700: #4A4A4F;
+    --gray-500: #86868B;
+    --gray-200: #E8E8EC;
+    --gray-100: #F5F6F8;
+    --white: #FFFFFF;
+    --yellow: #FFD43B;
+    --red: #FF5A5F;
+    --club: #6A3DF0;
+    --club-light: #F3EEFF;
+    --radius: 20px;
+    --gutter: 20px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--ink);
+    background: var(--white);
+    -webkit-font-smoothing: antialiased;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+  }
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; border: 0; cursor: pointer; }
+  .jua { font-family: 'Jua', 'Noto Sans KR', sans-serif; font-weight: 400; }
+  .nowrap { white-space: nowrap; }
+
+  .page { padding-bottom: 96px; overflow: hidden; }
+  section { padding: 56px var(--gutter); scroll-margin-top: 56px; }
+  .eyebrow {
+    display: inline-block;
+    font-size: 13px; font-weight: 700;
+    color: var(--mint-dark);
+    background: var(--mint-light);
+    padding: 6px 12px; border-radius: 999px;
+    margin-bottom: 14px;
+  }
+  .sec-title { font-size: 28px; line-height: 1.3; margin-bottom: 10px; }
+  .sec-desc { font-size: 15px; line-height: 1.6; color: var(--gray-700); }
+  .center { text-align: center; }
+  .cta-wrap { margin-top: 24px; }
+
+  /* ---------- 1. 상단 바 ---------- */
+  .topbar {
+    position: sticky; top: 0; z-index: 20;
+    display: flex; align-items: center; justify-content: space-between; gap: 8px;
+    padding: 12px var(--gutter);
+    background: rgba(42,193,188,.97);
+  }
+  .logo { color: var(--white); font-size: 22px; letter-spacing: -0.5px; white-space: nowrap; }
+  .topbar .mini-cta {
+    background: var(--white); color: var(--mint-dark);
+    font-size: 13px; font-weight: 700; white-space: nowrap;
+    padding: 8px 14px; border-radius: 999px;
+  }
+
+  /* ---------- 2. 히어로 ---------- */
+  .hero {
+    background: var(--mint);
+    color: var(--white);
+    padding: 32px var(--gutter) 64px;
+    position: relative;
+    text-align: center;
+  }
+  .hero .greeting {
+    display: inline-block;
+    background: rgba(255,255,255,.2);
+    font-size: 14px; font-weight: 700;
+    padding: 7px 14px; border-radius: 999px;
+    margin-bottom: 16px;
+  }
+  .hero h1 { font-size: 38px; line-height: 1.25; margin-bottom: 12px; }
+  .hero h1 em { font-style: normal; color: var(--yellow); }
+  .hero .sub { font-size: 16px; line-height: 1.6; opacity: .95; margin-bottom: 18px; }
+  /* 혜택 합계의 근거를 바로 보여주는 계산식 */
+  .breakdown {
+    display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 6px;
+    margin-bottom: 26px;
+  }
+  .breakdown > span {
+    background: var(--white); color: var(--ink);
+    font-size: 13px; font-weight: 700;
+    padding: 6px 10px; border-radius: 10px; white-space: nowrap;
+  }
+  .breakdown b { color: var(--mint-dark); }
+  .breakdown i { font-style: normal; font-weight: 900; opacity: .9; }
+
+  /* 히어로 비주얼: 가입 직후 '쿠폰함' 화면 목업 — 받게 될 혜택을 그대로 보여줌 */
+  .hero-visual {
+    position: relative;
+    width: 230px; margin: 34px auto 24px;
+  }
+  .shot .reveal, .shot .sticky-cta, .shot .app-coupon { transition: none; animation: none; }
+  .phone {
+    position: relative; z-index: 1;
+    background: var(--ink); border-radius: 30px; padding: 8px;
+    box-shadow: 0 22px 44px rgba(0,0,0,.22);
+  }
+  .screen { background: var(--gray-100); border-radius: 23px; overflow: hidden; text-align: left; color: var(--ink); }
+  .app-head {
+    background: var(--white); padding: 14px 14px 10px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 13px; font-weight: 900;
+  }
+  .app-head small { font-size: 11px; font-weight: 700; color: var(--mint-dark); background: var(--mint-light); padding: 3px 7px; border-radius: 999px; }
+  .app-list { padding: 10px; display: grid; gap: 7px; }
+  .app-coupon {
+    display: flex; align-items: center; gap: 9px;
+    background: var(--white); border-radius: 12px; padding: 9px 10px;
+    border-left: 5px solid var(--mint);
+    animation: pop .5s ease both;
+  }
+  .app-coupon:nth-child(2) { border-color: var(--club); animation-delay: .15s; }
+  .app-coupon:nth-child(3) { border-color: var(--red); animation-delay: .3s; }
+  .app-coupon svg { width: 26px; height: 26px; flex: none; }
+  .app-coupon small { display: block; font-size: 10px; color: var(--gray-500); font-weight: 700; }
+  .app-coupon b { display: block; font-family: 'Jua'; font-weight: 400; font-size: 17px; line-height: 1.2; white-space: nowrap; }
+  .app-total {
+    margin: 0 10px 12px; padding: 9px 10px; border-radius: 10px;
+    background: var(--ink); color: var(--white);
+    display: flex; justify-content: space-between; font-size: 11px; font-weight: 700;
+  }
+  .app-total b { color: var(--yellow); font-size: 13px; }
+  @keyframes pop { from { opacity: 0; transform: translateX(14px); } to { opacity: 1; transform: none; } }
+  .float { position: absolute; z-index: 0; font-size: 44px; animation: bob 3s ease-in-out infinite; }
+  .float.f1 { top: 30px; left: -52px; }
+  .float.f3 { bottom: 10px; right: -50px; animation-delay: 1.2s; }
+  @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+  .total-badge {
+    position: absolute; z-index: 2; top: -22px; right: -34px;
+    background: var(--yellow); color: var(--ink);
+    width: 92px; height: 92px; border-radius: 50%;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700; line-height: 1.2;
+    transform: rotate(12deg);
+    box-shadow: 0 6px 16px rgba(0,0,0,.15);
+  }
+  .total-badge b { font-family: 'Jua'; font-size: 22px; font-weight: 400; }
+  .hero .scroll-hint { margin-top: 18px; font-size: 13px; opacity: .85; }
+  .wave {
+    position: absolute; left: 0; right: 0; bottom: -1px; height: 32px;
+    background: var(--white);
+    border-radius: 32px 32px 0 0;
+  }
+  .qr-inline { display: none; }
+
+  /* ---------- 공통 CTA 버튼 ---------- */
+  .cta {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    width: 100%;
+    background: var(--ink); color: var(--white);
+    font-size: 18px; font-weight: 700; text-align: center;
+    padding: 18px 20px; border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0,0,0,.18);
+    transition: transform .15s ease;
+  }
+  .cta:active { transform: scale(.98); }
+  .cta.mint { background: var(--mint); }
+  .cta.club { background: var(--club); }
+  .cta .arrow { font-size: 20px; }
+  .store-row { display: flex; gap: 8px; margin-top: 10px; }
+  .store-btn {
+    flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px;
+    background: rgba(0,0,0,.18); color: var(--white);
+    font-size: 13px; font-weight: 500; white-space: nowrap;
+    padding: 11px 8px; border-radius: 12px;
+  }
+  .cta-note { margin-top: 10px; font-size: 12px; color: var(--gray-500); text-align: center; }
+
+  /* ---------- 3. 혜택 요약 ---------- */
+  .summary { padding-top: 24px; }
+  .benefit-list { display: grid; gap: 12px; margin-top: 24px; }
+  .benefit-card {
+    display: flex; align-items: center; gap: 16px;
+    padding: 18px; border-radius: var(--radius);
+    background: var(--gray-100);
+    position: relative;
+  }
+  .benefit-card .num { position: absolute; top: 12px; right: 14px; font-family: 'Jua'; font-size: 13px; color: var(--gray-500); }
+  .benefit-card .icon {
+    flex: none; width: 60px; height: 60px; border-radius: 18px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 30px; background: var(--white);
+  }
+  .benefit-card .label { font-size: 13px; color: var(--gray-700); margin-bottom: 4px; }
+  .benefit-card .value { font-size: 22px; }
+  .benefit-card .value small { font-family: 'Noto Sans KR'; font-size: 13px; color: var(--gray-500); font-weight: 500; }
+  .benefit-card .cond { font-size: 12px; color: var(--gray-500); margin-top: 2px; }
+  .total-line {
+    margin-top: 14px; padding: 16px 18px; border-radius: 16px;
+    background: var(--ink); color: var(--white);
+    display: flex; justify-content: space-between; align-items: center; gap: 10px;
+    font-size: 14px; font-weight: 700;
+  }
+  .total-line b { font-family: 'Jua'; font-weight: 400; font-size: 24px; color: var(--yellow); white-space: nowrap; }
+  .c-mint { color: var(--mint-dark); }
+  .c-club { color: var(--club); }
+  .c-red { color: var(--red); }
+
+  /* ---------- 4. 첫 주문 쿠폰 ---------- */
+  .first-order { background: var(--mint-light); }
+  .first-order .eyebrow { background: var(--white); }
+  .coupon {
+    position: relative;
+    margin: 28px 0 20px;
+    display: flex;
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: 0 10px 28px rgba(31,168,163,.18);
+    overflow: hidden;
+  }
+  .coupon .left { flex: 1; min-width: 0; padding: 24px 20px; }
+  .coupon .tag { font-size: 12px; font-weight: 700; color: var(--mint-dark); margin-bottom: 6px; }
+  .coupon .amount { font-family: 'Jua'; font-size: 44px; line-height: 1; color: var(--ink); white-space: nowrap; }
+  .coupon .amount span { font-size: 22px; }
+  .coupon .cond { margin-top: 8px; font-size: 12px; color: var(--gray-500); }
+  .coupon .right {
+    width: 96px; flex: none;
+    background: var(--mint); color: var(--white);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 700; gap: 4px;
+    border-left: 2px dashed rgba(255,255,255,.7);
+    position: relative;
+  }
+  .coupon .right::before, .coupon .right::after {
+    content: ''; position: absolute; left: -12px;
+    width: 22px; height: 22px; border-radius: 50%;
+    background: var(--mint-light);
+  }
+  .coupon .right::before { top: -11px; }
+  .coupon .right::after { bottom: -11px; }
+  .coupon .right .big { font-size: 26px; }
+  .coupon-sub { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .coupon-sub div {
+    background: var(--white); border-radius: 14px; padding: 14px;
+    font-size: 13px; line-height: 1.5; color: var(--gray-700);
+  }
+  .coupon-sub b { display: block; font-size: 15px; color: var(--ink); margin-bottom: 2px; }
+
+  /* ---------- 5. 배민클럽 ---------- */
+  .club-sec { background: var(--club-light); }
+  .club-sec .eyebrow { color: var(--club); background: #E4DAFF; }
+  .club-card {
+    margin: 28px 0 20px;
+    background: linear-gradient(135deg, #6A3DF0, #9B6BFF);
+    color: var(--white);
+    border-radius: var(--radius);
+    padding: 24px 20px;
+    position: relative; overflow: hidden;
+  }
+  .club-card::after { content: '👑'; position: absolute; right: -8px; bottom: -18px; font-size: 110px; opacity: .2; }
+  .club-card .price { display: flex; align-items: baseline; gap: 10px; margin: 10px 0 4px; flex-wrap: wrap; }
+  .club-card .price del { opacity: .7; font-size: 16px; }
+  .club-card .price b { font-family: 'Jua'; font-size: 40px; font-weight: 400; color: var(--yellow); }
+  .club-card p { font-size: 13px; opacity: .9; }
+  .club-perks { display: grid; gap: 10px; }
+  .perk { display: flex; gap: 14px; align-items: flex-start; background: var(--white); border-radius: 16px; padding: 16px; }
+  .perk .pi { font-size: 26px; flex: none; }
+  .perk b { display: block; font-size: 15px; margin-bottom: 3px; }
+  .perk span { font-size: 13px; color: var(--gray-700); line-height: 1.5; }
+
+  /* ---------- 6. 친구 초대 ---------- */
+  .invite-visual { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 28px 0 24px; }
+  .person { flex: 1; max-width: 150px; background: var(--gray-100); border-radius: var(--radius); padding: 20px 10px; text-align: center; }
+  .person .face { font-size: 44px; margin-bottom: 8px; }
+  .person .who { font-size: 13px; color: var(--gray-500); margin-bottom: 4px; }
+  .person .gift { font-size: 22px; color: var(--red); white-space: nowrap; }
+  .plus { font-family: 'Jua'; font-size: 28px; color: var(--gray-500); }
+  .code-box { background: var(--gray-100); border-radius: 16px; padding: 18px; margin-bottom: 14px; }
+  .code-box label { display: block; font-size: 14px; font-weight: 700; margin-bottom: 10px; }
+  .code-row { display: flex; gap: 8px; }
+  .code-row input {
+    flex: 1; min-width: 0;
+    font-family: inherit; font-size: 16px; letter-spacing: 1px;
+    padding: 14px; border-radius: 12px;
+    border: 2px solid var(--gray-200); background: var(--white);
+    text-transform: uppercase;
+  }
+  .code-row input:focus { outline: none; border-color: var(--mint); }
+  .code-row button { flex: none; padding: 0 16px; border-radius: 12px; background: var(--ink); color: var(--white); font-size: 14px; font-weight: 700; }
+  .code-msg { font-size: 13px; margin-top: 8px; min-height: 18px; }
+  .code-msg.ok { color: var(--mint-dark); }
+  .code-msg.err { color: var(--red); }
+  .share-btn {
+    width: 100%; padding: 15px; border-radius: 14px; margin-top: 10px;
+    background: #FEE500; color: #191919; font-size: 15px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+  }
+
+  /* ---------- 7. 받는 방법 ---------- */
+  .steps-sec { background: var(--gray-100); }
+  .steps { margin-top: 28px; display: grid; position: relative; }
+  .step { display: flex; gap: 16px; padding-bottom: 24px; position: relative; }
+  .step:not(:last-child)::before { content: ''; position: absolute; left: 21px; top: 44px; bottom: 0; width: 2px; background: var(--gray-200); }
+  .step .dot {
+    flex: none; width: 44px; height: 44px; border-radius: 50%;
+    background: var(--mint); color: var(--white);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Jua'; font-size: 20px;
+  }
+  .step b { display: block; font-size: 17px; margin: 10px 0 4px; }
+  .step span { font-size: 14px; color: var(--gray-700); line-height: 1.5; }
+
+  /* ---------- 8. 카테고리 / 신뢰 ---------- */
+  .cats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 26px 0 30px; }
+  .cat { background: var(--gray-100); border-radius: 16px; padding: 14px 4px; text-align: center; font-size: 12px; color: var(--gray-700); }
+  .cat i { display: block; font-style: normal; font-size: 30px; margin-bottom: 6px; }
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .stat { text-align: center; padding: 16px 6px; border-radius: 16px; border: 1.5px solid var(--gray-200); }
+  .stat b { display: block; font-family: 'Jua'; font-weight: 400; font-size: 22px; color: var(--mint-dark); }
+  .stat span { font-size: 12px; color: var(--gray-500); }
+  .review { margin-top: 14px; background: var(--mint-light); border-radius: 16px; padding: 18px; font-size: 14px; line-height: 1.6; }
+  .review .who { margin-top: 6px; font-size: 12px; color: var(--gray-500); }
+
+  /* ---------- 9. FAQ / 유의사항 ---------- */
+  .faq { margin-top: 24px; }
+  details { border-bottom: 1px solid var(--gray-200); }
+  summary { list-style: none; cursor: pointer; padding: 18px 28px 18px 0; position: relative; font-size: 15px; font-weight: 700; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: '+'; position: absolute; right: 4px; top: 50%; transform: translateY(-50%); font-size: 22px; color: var(--gray-500); }
+  details[open] summary::after { content: '−'; }
+  details p { padding: 0 0 18px; font-size: 14px; color: var(--gray-700); line-height: 1.6; }
+  .notice { margin-top: 28px; padding: 18px; border-radius: 14px; background: var(--gray-100); font-size: 12px; color: var(--gray-500); line-height: 1.7; }
+  .notice b { display: block; color: var(--gray-700); margin-bottom: 6px; font-size: 13px; }
+  .notice li { margin-left: 14px; }
+
+  /* ---------- 10. 마지막 CTA ---------- */
+  .final { background: var(--mint); color: var(--white); text-align: center; padding: 56px var(--gutter) 48px; }
+  .final h2 { font-size: 30px; line-height: 1.3; margin-bottom: 10px; }
+  .final h2 em { font-style: normal; color: var(--yellow); }
+  .final p { font-size: 15px; opacity: .95; margin-bottom: 22px; }
+  .final-inner { max-width: 480px; margin: 0 auto; }
+  footer { padding: 24px var(--gutter) 12px; font-size: 11px; color: var(--gray-500); line-height: 1.6; text-align: center; }
+
+  /* ---------- 하단 고정 CTA ---------- */
+  .sticky-cta {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
+    transform: translateY(110%);
+    transition: transform .3s ease;
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+    background: rgba(255,255,255,.97);
+    border-top: 1px solid var(--gray-200);
+  }
+  .sticky-cta.show { transform: translateY(0); }
+  .sticky-cta .cta { padding: 16px; font-size: 17px; box-shadow: none; max-width: 480px; margin: 0 auto; }
+  .sticky-cta .cta small { font-weight: 500; opacity: .85; font-size: 13px; }
+
+  /* ---------- QR 모달 (PC 유입) ---------- */
+  .qr-modal {
+    position: fixed; inset: 0; z-index: 50;
+    background: rgba(0,0,0,.5);
+    display: none; align-items: center; justify-content: center; padding: 20px;
+  }
+  .qr-modal.open { display: flex; }
+  .qr-card {
+    background: var(--white); border-radius: 24px; padding: 32px 28px 24px;
+    text-align: center; max-width: 360px; width: 100%; position: relative;
+  }
+  .qr-card h3 { font-size: 24px; margin-bottom: 6px; }
+  .qr-card p { font-size: 14px; color: var(--gray-700); line-height: 1.6; }
+  .qr-box { width: 172px; height: 172px; margin: 18px auto; padding: 12px; border-radius: 16px; border: 2px solid var(--gray-200); background: #fff; }
+  .qr-box img, .qr-box canvas { width: 100% !important; height: 100% !important; }
+  .qr-close { position: absolute; top: 12px; right: 14px; background: none; font-size: 24px; color: var(--gray-500); }
+  .qr-card .store-row .store-btn { background: var(--gray-100); color: var(--ink); }
+
+  /* 스크롤 등장 애니메이션 */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .float { animation: none; }
+  }
+
+  .toast {
+    position: fixed; left: 50%; bottom: 110px; z-index: 60;
+    transform: translateX(-50%) translateY(20px);
+    background: rgba(29,29,31,.92); color: var(--white);
+    font-size: 14px; padding: 12px 18px; border-radius: 999px;
+    opacity: 0; pointer-events: none; transition: all .25s ease;
+    max-width: calc(100% - 32px); text-align: center;
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  /* =========================================================
+     반응형
+     ========================================================= */
+
+  /* 폴더블 커버 화면·소형폰 (~340px) */
+  @media (max-width: 340px) {
+    :root { --gutter: 16px; }
+    .logo { font-size: 19px; }
+    .topbar .mini-cta { padding: 7px 11px; font-size: 12px; }
+    .hero h1 { font-size: 30px; }
+    .hero .sub { font-size: 14px; }
+    .hero .sub br { display: none; }
+    .hero-visual { width: 196px; }
+    .app-coupon b { font-size: 15px; }
+    .float { display: none; }
+    .total-badge { width: 72px; height: 72px; right: -10px; top: -26px; font-size: 10px; }
+    .total-badge b { font-size: 17px; }
+    .cta { font-size: 16px; padding: 16px 12px; }
+    .sec-title { font-size: 24px; }
+    .benefit-card { gap: 12px; padding: 16px 14px; }
+    .benefit-card .icon { width: 48px; height: 48px; font-size: 24px; border-radius: 14px; }
+    .benefit-card .value { font-size: 19px; }
+    .coupon .amount { font-size: 36px; }
+    .coupon .right { width: 76px; }
+    .coupon-sub { grid-template-columns: 1fr; }
+    .club-card .price b { font-size: 34px; }
+    .person .face { font-size: 36px; }
+    .person .gift { font-size: 18px; }
+    .cats { grid-template-columns: repeat(4, 1fr); gap: 6px; }
+    .cat { font-size: 11px; padding: 10px 2px; }
+    .cat i { font-size: 24px; }
+    .stat b { font-size: 18px; }
+    .final h2 { font-size: 26px; }
+    .sticky-cta { padding: 10px 12px calc(10px + env(safe-area-inset-bottom)); }
+    .sticky-cta .cta { font-size: 15px; padding: 14px 10px; }
+    .sticky-cta .cta small { display: none; }
+  }
+  /* 피처폰급 초소형 (~260px) */
+  @media (max-width: 260px) {
+    .hero h1 { font-size: 26px; }
+    .float { display: none; }
+    .store-row { flex-direction: column; }
+    .cats { grid-template-columns: repeat(2, 1fr); }
+    .stats { grid-template-columns: 1fr; }
+    .invite-visual { flex-direction: column; }
+    .person { max-width: none; width: 100%; }
+  }
+  /* 화면 높이가 낮은 기기: 첫 화면 안에 CTA가 보이도록 이미지 축소 */
+  @media (max-height: 700px) and (max-width: 639px) {
+    .hero { padding-top: 22px; }
+    .hero .greeting { margin-bottom: 10px; }
+    .hero h1 { font-size: 30px; margin-bottom: 8px; }
+    .hero .sub { margin-bottom: 14px; }
+    .hero-visual { margin-bottom: 16px; }
+    .app-head { padding: 9px 12px 7px; }
+    .app-list { padding: 8px; gap: 5px; }
+    .app-coupon { padding: 6px 9px; }
+    .app-total { margin-bottom: 8px; }
+  }
+  @media (max-width: 639px) { .app-head small { display: none; } }
+  /* 모바일에서는 폰 목업이 혜택 구성을 대신 보여주므로 칩 생략 */
+  @media (max-width: 639px) { .hero .breakdown { display: none; } }
+  @media (min-width: 640px) and (max-width: 1023px) { .hero .breakdown span { font-size: 12px; padding: 5px 8px; } }
+
+  /* 폴더블 펼침·태블릿 (640px~) */
+  @media (min-width: 640px) {
+    :root { --gutter: max(32px, calc((100% - 640px) / 2)); }
+    .hero {
+      display: grid; grid-template-columns: 1.1fr .9fr; column-gap: 28px;
+      grid-template-areas: "txt vis" "cta vis";
+      text-align: left; align-items: center;
+    }
+    .hero .txt { grid-area: txt; align-self: end; }
+    .hero .hero-visual { grid-area: vis; margin: 20px auto; width: 240px; }
+    .hero .cta-area { grid-area: cta; align-self: start; }
+    .hero .breakdown { justify-content: flex-start; margin-bottom: 12px; display: flex; }
+    .hero .scroll-hint { display: none; }
+    .hero h1 { font-size: 40px; }
+    .benefit-list { grid-template-columns: repeat(3, 1fr); }
+    .benefit-card { flex-direction: column; text-align: center; padding: 24px 14px; }
+    .club-perks { grid-template-columns: repeat(3, 1fr); }
+    .perk { flex-direction: column; }
+    .cats { grid-template-columns: repeat(8, 1fr); }
+    .steps { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .step { flex-direction: column; padding-bottom: 0; }
+    .step:not(:last-child)::before { left: 44px; right: -16px; top: 21px; bottom: auto; width: auto; height: 2px; }
+    .cta-wrap, .center-cta { max-width: 440px; margin-left: auto; margin-right: auto; }
+  }
+
+  /* 데스크탑 (1024px~): 넓은 2단 레이아웃 + QR로 앱 설치 */
+  @media (min-width: 1024px) {
+    :root { --gutter: max(48px, calc((100% - 1080px) / 2)); }
+    section { padding-top: 96px; padding-bottom: 96px; }
+    .topbar { padding-top: 16px; padding-bottom: 16px; }
+    .logo { font-size: 26px; }
+    .topbar .mini-cta { font-size: 14px; padding: 10px 18px; }
+    .sec-title { font-size: 40px; }
+    .sec-desc { font-size: 17px; }
+
+    .hero {
+      display: grid; grid-template-columns: 1.1fr .9fr; column-gap: 48px;
+      grid-template-areas: "txt vis" "cta vis";
+      text-align: left; padding-top: 72px; padding-bottom: 110px;
+    }
+    .hero .txt { grid-area: txt; align-self: end; }
+    .hero .hero-visual { grid-area: vis; align-self: center; width: 320px; margin: 0 auto; }
+    .app-head { font-size: 16px; padding: 18px 18px 12px; }
+    .app-list { padding: 14px; gap: 10px; }
+    .app-coupon { padding: 14px; gap: 12px; }
+    .app-coupon svg { width: 34px; height: 34px; }
+    .app-coupon small { font-size: 12px; }
+    .app-coupon b { font-size: 22px; }
+    .app-total { margin: 0 14px 16px; padding: 12px 14px; font-size: 13px; }
+    .app-total b { font-size: 17px; }
+    .float { font-size: 64px; }
+    .float.f1 { left: -80px; }
+    .float.f3 { right: -80px; }
+    .total-badge { width: 130px; height: 130px; right: -60px; top: -30px; font-size: 15px; }
+    .total-badge b { font-size: 32px; }
+    .hero .cta-area { grid-area: cta; margin: 0; max-width: none; }
+    .hero h1 { font-size: 60px; }
+    .hero .sub { font-size: 19px; }
+    .breakdown { justify-content: flex-start; margin-bottom: 0; }
+    .breakdown span { font-size: 15px; padding: 8px 12px; }
+    .hero .cta, .hero .store-row, .hero .scroll-hint { display: none; }
+    .qr-inline {
+      display: flex; align-items: center; gap: 20px; margin-top: 28px;
+      background: var(--white); color: var(--ink);
+      border-radius: 20px; padding: 18px 22px; max-width: 520px;
+      box-shadow: 0 14px 34px rgba(0,0,0,.14);
+    }
+    .qr-inline .qr-box { width: 120px; height: 120px; margin: 0; padding: 8px; flex: none; }
+    .qr-inline b { display: block; font-size: 18px; margin-bottom: 4px; }
+    .qr-inline p { font-size: 14px; color: var(--gray-700); line-height: 1.5; }
+    .qr-inline .stores { display: flex; gap: 6px; margin-top: 10px; }
+    .qr-inline .stores a { font-size: 12px; font-weight: 700; background: var(--gray-100); padding: 7px 10px; border-radius: 8px; }
+
+    .summary { padding-top: 48px; }
+    .benefit-card { padding: 32px 20px; }
+    .benefit-card .icon { width: 72px; height: 72px; font-size: 36px; }
+    .benefit-card .value { font-size: 28px; }
+
+    /* 혜택 상세: 좌측 설명 + 우측 비주얼 2단 */
+    .split {
+      display: grid; grid-template-columns: 1fr 1fr; column-gap: 64px;
+      grid-template-areas: "txt vis" "cta vis"; align-items: start;
+    }
+    .split > .txt { grid-area: txt; align-self: end; }
+    .split > .vis { grid-area: vis; align-self: center; }
+    .split > .cta-wrap { grid-area: cta; margin: 28px 0 0; max-width: 400px; }
+    .split .coupon, .split .club-card, .split .invite-visual { margin-top: 0; }
+    .cta { font-size: 19px; }
+
+    .steps-sec .center-cta, .cta-wrap.center { margin-left: auto; margin-right: auto; }
+    .faq-wrap { display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: start; }
+    .faq-wrap .notice { margin-top: 24px; }
+    .final h2 { font-size: 44px; }
+    .final-inner { max-width: 560px; }
+
+    .sticky-cta { display: none; }
+    .page { padding-bottom: 0; }
+  }
+</style>
+</head>
+<body>
+<!-- 아이콘 스프라이트 (이모지 대신 벡터 아이콘 → 기기별 렌더링 차이 없음) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-coupon" viewBox="0 0 24 24"><path fill="currentColor" d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2.5a2.5 2.5 0 0 0 0 5V17a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2.5a2.5 2.5 0 0 0 0-5V7zm11 1.5v2h-2v-2h2zm0 3.5v2h-2v-2h2zm0 3.5v2h-2v-2h2z"/></symbol>
+  <symbol id="i-crown" viewBox="0 0 24 24"><path fill="currentColor" d="M3 8l4.5 4L12 5l4.5 7L21 8l-2 10H5L3 8zm2.6 12h12.8v1.6H5.6z"/></symbol>
+  <symbol id="i-gift" viewBox="0 0 24 24"><path fill="currentColor" d="M20 7h-2.2a3 3 0 0 0-5.3-3L12 4.700l-.5-.7A3 3 0 0 0 6.200 7H4a1 1 0 0 0-1 1v3h8V7h2v4h8V8a1 1 0 0 0-1-1zM9 7a1 1 0 1 1 0-2c.6 0 1.100.3 1.500 1L11 7H9zm6 0h-2l.5-1c.4-.7.9-1 1.500-1a1 1 0 1 1 0 2zM4 12v7a1 1 0 0 0 1 1h6v-8H4zm9 0v8h6a1 1 0 0 0 1-1v-7h-7z"/></symbol>
+</svg>
+<div class="page">
+
+  <!-- 1. 상단 바 -->
+  <header class="topbar">
+    <span class="logo jua">배달의민족</span>
+    <a href="#" class="mini-cta js-download" data-pos="topbar">앱 받고 혜택받기</a>
+  </header>
+
+  <!-- 2. 히어로 -->
+  <section class="hero">
+    <div class="txt">
+      <span class="greeting" id="greeting">배민이 처음이세요? 반가워요 👋</span>
+      <h1 class="jua">웰컴 혜택<br><em><span class="js-b" data-b="total">18,990</span>원</em><br>지금 받아가세요</h1>
+      <p class="sub">처음이거나 1년 만에 돌아온 분만 받는<br>3가지 혜택을 한 번에 드려요.</p>
+      <div class="breakdown" aria-label="혜택 구성">
+        <span>첫 주문 <b><span class="js-b" data-b="first">10,000</span>원</b></span><i>+</i>
+        <span>배민클럽 <b><span class="js-b" data-b="club">3,990</span>원</b></span><i>+</i>
+        <span>친구 초대 <b><span class="js-b" data-b="friend">5,000</span>원</b></span>
+      </div>
+    </div>
+
+    <div class="hero-visual" aria-hidden="true">
+      <span class="float f1">🍗</span>
+      <span class="float f3">🍕</span>
+      <div class="phone">
+        <div class="screen">
+          <div class="app-head">쿠폰함 <small>가입 즉시 지급</small></div>
+          <div class="app-list">
+            <div class="app-coupon"><svg class="c-mint"><use href="#i-coupon"/></svg><div><small>첫 주문 쿠폰</small><b><span class="js-b" data-b="first">10,000</span>원 할인</b></div></div>
+            <div class="app-coupon"><svg class="c-club"><use href="#i-crown"/></svg><div><small>배민클럽 1개월</small><b>0원 무료 체험</b></div></div>
+            <div class="app-coupon"><svg class="c-red"><use href="#i-gift"/></svg><div><small>친구 초대 쿠폰</small><b><span class="js-b" data-b="friend">5,000</span>원 쿠폰</b></div></div>
+          </div>
+          <div class="app-total">받은 웰컴 혜택 <b><span class="js-b" data-b="total">18,990</span>원</b></div>
+        </div>
+      </div>
+      <div class="total-badge">혜택 합계<b class="js-b" data-b="total">18,990</b>원</div>
+    </div>
+
+    <div class="cta-area">
+      <a href="#" class="cta js-download" id="heroCta" data-pos="hero">
+        앱 다운받고 혜택 받기 <span class="arrow">→</span>
+      </a>
+      <div class="store-row">
+        <a href="#" class="store-btn js-store" data-store="ios" data-pos="hero"> App Store</a>
+        <a href="#" class="store-btn js-store" data-store="android" data-pos="hero">▶ Google Play</a>
+      </div>
+      <!-- 데스크탑 전용: QR로 바로 설치 -->
+      <div class="qr-inline">
+        <div class="qr-box js-qr"></div>
+        <div>
+          <b>휴대폰 카메라로 스캔하세요</b>
+          <p>앱 설치 후 가입하면 <span class="js-b" data-b="total">18,990</span>원 혜택이 바로 쿠폰함에 들어가요.</p>
+          <div class="stores">
+            <a href="#" class="js-store" data-store="ios" data-pos="hero_pc">App Store</a>
+            <a href="#" class="js-store" data-store="android" data-pos="hero_pc">Google Play</a>
+          </div>
+        </div>
+      </div>
+      <p class="scroll-hint">아래로 내려서 혜택 자세히 보기 ↓</p>
+    </div>
+    <div class="wave"></div>
+  </section>
+
+  <!-- 3. 혜택 요약 -->
+  <section class="summary reveal" id="summary">
+    <span class="eyebrow">WELCOME BENEFIT</span>
+    <h2 class="sec-title jua">처음·복귀 고객만을 위한<br>3가지 웰컴 혜택</h2>
+    <p class="sec-desc">배민을 처음 쓰시거나 1년 넘게 주문이 없으셨던 분께 드려요.</p>
+
+    <div class="benefit-list">
+      <a href="#first" class="benefit-card">
+        <span class="num">01</span>
+        <div class="icon">🎟️</div>
+        <div>
+          <p class="label">첫 주문 할인</p>
+          <p class="value jua c-mint"><span class="js-b" data-b="first">10,000</span>원 <small>쿠폰</small></p>
+          <p class="cond">가입 즉시 자동 지급</p>
+        </div>
+      </a>
+      <a href="#club" class="benefit-card">
+        <span class="num">02</span>
+        <div class="icon">👑</div>
+        <div>
+          <p class="label">배민클럽 첫 달 무료</p>
+          <p class="value jua c-club"><span class="js-b" data-b="club">3,990</span>원 <small>상당</small></p>
+          <p class="cond">가입 즉시 체험 시작</p>
+        </div>
+      </a>
+      <a href="#invite" class="benefit-card">
+        <span class="num">03</span>
+        <div class="icon">🎁</div>
+        <div>
+          <p class="label">친구 초대 · 둘 다</p>
+          <p class="value jua c-red"><span class="js-b" data-b="friend">5,000</span>원씩 <small>쿠폰</small></p>
+          <p class="cond">초대받은 친구 첫 주문 시</p>
+        </div>
+      </a>
+    </div>
+    <div class="total-line">웰컴 혜택 합계 <b><span class="js-b" data-b="total">18,990</span>원</b></div>
+  </section>
+
+  <!-- 4. 혜택 1: 첫 주문 쿠폰 -->
+  <section class="first-order reveal" id="first">
+    <div class="split">
+      <div class="txt">
+        <span class="eyebrow">혜택 01</span>
+        <h2 class="sec-title jua">첫 주문은<br><span class="js-b" data-b="first">10,000</span>원 할인!</h2>
+        <p class="sec-desc">가입하면 쿠폰함에 바로 들어가요.<br>먹고 싶었던 메뉴, 부담 없이 시켜보세요.</p>
+      </div>
+      <div class="vis">
+        <div class="coupon">
+          <div class="left">
+            <p class="tag">첫 주문 전용 쿠폰</p>
+            <p class="amount"><span class="js-b" data-b="first" style="font-size:inherit">10,000</span><span>원</span></p>
+            <p class="cond"><span class="js-b" data-b="firstMin">15,000</span>원 이상 주문 시 · 발급일로부터 14일</p>
+          </div>
+          <div class="right"><span class="big">🎟️</span>자동 지급</div>
+        </div>
+        <div class="coupon-sub">
+          <div><b>모든 카테고리</b>치킨·피자·한식·카페까지 어디서나 사용</div>
+          <div><b>알뜰·한집배달</b>배달 방식 상관없이 적용돼요</div>
+        </div>
+      </div>
+      <div class="cta-wrap">
+        <a href="#" class="cta mint js-download" data-pos="first_order">
+          <span><span class="js-b" data-b="first">10,000</span>원 쿠폰 받으러 가기</span> <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. 혜택 2: 배민클럽 -->
+  <section class="club-sec reveal" id="club">
+    <div class="split">
+      <div class="txt">
+        <span class="eyebrow">혜택 02</span>
+        <h2 class="sec-title jua">배민클럽<br>첫 달은 무료로!</h2>
+        <p class="sec-desc">회원가입만 하면 배민클럽 1개월 무료 체험이 시작돼요.<br>배달팁 걱정 없이 마음껏 시켜보세요.</p>
+      </div>
+      <div class="vis">
+        <div class="club-card">
+          <p style="font-size:14px;font-weight:700;">배민클럽 멤버십</p>
+          <div class="price">
+            <del>월 <span class="js-b" data-b="club">3,990</span>원</del>
+            <b>0원</b>
+          </div>
+          <p>첫 1개월 무료 · 언제든 해지 가능</p>
+        </div>
+        <div class="club-perks">
+          <div class="perk"><span class="pi">🛵</span><div><b>알뜰배달 무료배달</b><span>클럽 표시 가게에서 배달팁 0원</span></div></div>
+          <div class="perk"><span class="pi">⚡</span><div><b>한집배달 배달팁 할인</b><span>빠르게 받고 싶을 땐 한집배달도 할인</span></div></div>
+          <div class="perk"><span class="pi">🎉</span><div><b>클럽 전용 쿠폰</b><span>매달 클럽 회원만 받는 할인 쿠폰</span></div></div>
+        </div>
+      </div>
+      <div class="cta-wrap">
+        <a href="#" class="cta club js-download" data-pos="club">배민클럽 무료로 시작하기 <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. 혜택 3: 친구 초대 -->
+  <section class="reveal" id="invite">
+    <div class="split">
+      <div class="txt">
+        <span class="eyebrow">혜택 03</span>
+        <h2 class="sec-title jua">친구랑 같이 오면<br>둘 다 <span class="js-b" data-b="friend">5,000</span>원!</h2>
+        <p class="sec-desc">친구의 추천 코드로 가입하고 첫 주문을 하면<br>나도, 친구도 <span class="js-b" data-b="friend">5,000</span>원 쿠폰을 받아요.</p>
+      </div>
+      <div class="vis">
+        <div class="invite-visual">
+          <div class="person"><div class="face">🙋</div><p class="who">추천한 친구</p><p class="gift jua">+<span class="js-b" data-b="friend">5,000</span>원</p></div>
+          <span class="plus">+</span>
+          <div class="person"><div class="face">🙆</div><p class="who">가입한 나</p><p class="gift jua">+<span class="js-b" data-b="friend">5,000</span>원</p></div>
+        </div>
+        <div class="code-box">
+          <label for="refCode">친구에게 받은 추천 코드가 있나요?</label>
+          <div class="code-row">
+            <input id="refCode" type="text" maxlength="12" placeholder="예) BAEMIN1234" autocomplete="off">
+            <button type="button" id="refApply">적용</button>
+          </div>
+          <p class="code-msg" id="refMsg"></p>
+        </div>
+      </div>
+      <div class="cta-wrap">
+        <a href="#" class="cta js-download" data-pos="invite">코드 적용하고 앱 받기 <span class="arrow">→</span></a>
+        <button type="button" class="share-btn" id="shareBtn">💬 나도 친구 초대하기</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. 혜택 받는 방법 -->
+  <section class="steps-sec reveal" id="steps">
+    <div class="center">
+      <span class="eyebrow">HOW TO</span>
+      <h2 class="sec-title jua">혜택 받는 방법,<br>딱 3단계!</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="dot">1</div><div><b>배민 앱 다운로드</b><span>아래 버튼을 누르면 스토어로 바로 이동해요.</span></div></div>
+      <div class="step"><div class="dot">2</div><div><b>회원가입 (1분)</b><span>휴대폰 번호로 간편 가입. 추천 코드가 있다면 함께 입력하세요.</span></div></div>
+      <div class="step"><div class="dot">3</div><div><b>쿠폰함 확인하고 주문!</b><span>첫 주문 쿠폰과 배민클럽 무료 체험이 자동으로 적용돼요.</span></div></div>
+    </div>
+    <div class="cta-wrap center-cta">
+      <a href="#" class="cta js-download" data-pos="steps">지금 앱 다운로드 <span class="arrow">→</span></a>
+    </div>
+  </section>
+
+  <!-- 8. 카테고리 & 신뢰 요소 -->
+  <section class="reveal" id="menu">
+    <div class="center">
+      <span class="eyebrow">WHAT TO EAT</span>
+      <h2 class="sec-title jua">오늘 뭐 먹지?<br>배민엔 다 있어요</h2>
+    </div>
+    <div class="cats">
+      <div class="cat"><i>🍗</i>치킨</div>
+      <div class="cat"><i>🍕</i>피자</div>
+      <div class="cat"><i>🍚</i>한식</div>
+      <div class="cat"><i>🍣</i>일식</div>
+      <div class="cat"><i>🥡</i>중식</div>
+      <div class="cat"><i>🍔</i>버거</div>
+      <div class="cat"><i>☕</i>카페·디저트</div>
+      <div class="cat"><i>🛒</i>B마트</div>
+    </div>
+    <div class="stats">
+      <!-- 실제 집행 전 최신 공식 수치로 교체 -->
+      <div class="stat"><b>30만+</b><span>입점 가게</span></div>
+      <div class="stat"><b>No.1</b><span>배달앱</span></div>
+      <div class="stat"><b>30분</b><span>평균 도착</span></div>
+    </div>
+    <div class="review">
+      “1년 만에 다시 깔았는데 배민클럽 무료라 배달팁 없이 시켰어요. 첫 주문 쿠폰까지 받으니 거의 반값!”
+      <p class="who">— 복귀 고객 리뷰 예시</p>
+    </div>
+  </section>
+
+  <!-- 9. FAQ & 유의사항 -->
+  <section class="reveal" id="faq" style="padding-top:24px;">
+    <div class="faq-wrap">
+      <div>
+        <h2 class="sec-title jua">자주 묻는 질문</h2>
+        <div class="faq">
+          <details>
+            <summary>누가 혜택을 받을 수 있나요?</summary>
+            <p>배달의민족을 처음 가입하는 신규 고객, 또는 최근 1년간 주문 이력이 없는 고객이라면 받을 수 있어요.</p>
+          </details>
+          <details>
+            <summary>쿠폰은 어디서 확인하나요?</summary>
+            <p>앱 하단 [마이배민] → [쿠폰함]에서 확인할 수 있어요. 첫 주문 쿠폰은 가입 즉시 자동 발급됩니다.</p>
+          </details>
+          <details>
+            <summary>배민클럽 무료 체험 후 자동 결제되나요?</summary>
+            <p>무료 체험 종료 3일 전 알림을 보내드려요. 원치 않으시면 [마이배민] → [배민클럽]에서 언제든 해지할 수 있어요.</p>
+          </details>
+          <details>
+            <summary>친구 초대 쿠폰은 언제 들어오나요?</summary>
+            <p>초대받은 친구가 추천 코드로 가입하고 첫 주문을 완료하면, 두 사람 모두에게 <span class="js-b" data-b="friend">5,000</span>원 쿠폰이 지급돼요.</p>
+          </details>
+        </div>
+      </div>
+      <div class="notice">
+        <b>유의사항</b>
+        <ul>
+          <li>이벤트 기간: 2026.11.01 ~ 2026.12.31 (조기 종료될 수 있음)</li>
+          <li>웰컴 혜택 <span class="js-b" data-b="total">18,990</span>원 = 첫 주문 쿠폰 <span class="js-b" data-b="first">10,000</span>원 + 배민클럽 1개월(<span class="js-b" data-b="club">3,990</span>원 상당) + 친구 초대 쿠폰 <span class="js-b" data-b="friend">5,000</span>원(친구 1명 기준)</li>
+          <li>첫 주문 쿠폰은 <span class="js-b" data-b="firstMin">15,000</span>원 이상 주문 시 사용 가능하며, 발급일로부터 14일간 유효합니다.</li>
+          <li>배민클럽 무료 체험은 계정당 1회 제공되며, 체험 종료 후 정기결제로 전환될 수 있습니다.</li>
+          <li>친구 초대 쿠폰은 1인당 최대 10회까지 지급됩니다.</li>
+          <li>부정 가입·중복 계정 등이 확인될 경우 혜택이 회수될 수 있습니다.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. 마지막 CTA -->
+  <section class="final" id="final">
+    <div class="final-inner">
+      <h2 class="jua">웰컴 혜택 <em><span class="js-b" data-b="total">18,990</span>원</em><br>놓치기 전에 시작하세요!</h2>
+      <p>다운로드부터 첫 주문까지 3분이면 충분해요.</p>
+      <div class="breakdown">
+        <span>첫 주문 <b><span class="js-b" data-b="first">10,000</span>원</b></span><i>+</i>
+        <span>배민클럽 <b><span class="js-b" data-b="club">3,990</span>원</b></span><i>+</i>
+        <span>친구 초대 <b><span class="js-b" data-b="friend">5,000</span>원</b></span>
+      </div>
+      <a href="#" class="cta js-download" data-pos="final">배민 앱 다운로드 <span class="arrow">→</span></a>
+      <div class="store-row">
+        <a href="#" class="store-btn js-store" data-store="ios" data-pos="final"> App Store</a>
+        <a href="#" class="store-btn js-store" data-store="android" data-pos="final">▶ Google Play</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    (주)우아한형제들 · 본 페이지의 혜택 금액과 조건은 예시이며 실제 프로모션 정책에 따라 변경될 수 있습니다.
+  </footer>
+</div>
+
+<!-- 하단 고정 CTA (모바일: 히어로 CTA가 화면에서 벗어나면 노출) -->
+<div class="sticky-cta" id="stickyCta">
+  <a href="#" class="cta mint js-download" data-pos="sticky">
+    앱 받고 <span class="js-b" data-b="total">18,990</span>원 혜택 받기 <small>· 무료</small>
+  </a>
+</div>
+
+<!-- PC 유입 시 QR 모달 -->
+<div class="qr-modal" id="qrModal" role="dialog" aria-modal="true" aria-labelledby="qrTitle">
+  <div class="qr-card">
+    <button type="button" class="qr-close" id="qrClose" aria-label="닫기">×</button>
+    <h3 class="jua" id="qrTitle">휴대폰으로 스캔하세요</h3>
+    <p>카메라로 QR을 찍으면 배민 앱 설치 화면으로 이동해요.<br>가입하면 <span class="js-b" data-b="total">18,990</span>원 혜택이 바로 지급돼요.</p>
+    <div class="qr-box js-qr"></div>
+    <div class="store-row">
+      <a href="#" class="store-btn js-store" data-store="ios" data-pos="qr_modal"> App Store</a>
+      <a href="#" class="store-btn js-store" data-store="android" data-pos="qr_modal">▶ Google Play</a>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+(function () {
+  // ===== 혜택 금액: 여기만 바꾸면 페이지 전체 금액이 함께 바뀜 (상·하단 불일치 방지) =====
+  var BENEFITS = {
+    first: 10000,     // 첫 주문 쿠폰
+    firstMin: 15000,  // 첫 주문 쿠폰 최소 주문금액
+    club: 3990,       // 배민클럽 1개월 이용료 (무료 체험 가치)
+    friend: 5000      // 친구 초대 쿠폰 (1인 기준)
+  };
+  BENEFITS.total = BENEFITS.first + BENEFITS.club + BENEFITS.friend;
+  document.querySelectorAll('.js-b').forEach(function (el) {
+    var v = BENEFITS[el.dataset.b];
+    if (v != null) el.textContent = v.toLocaleString('ko-KR');
+  });
+
+  // ===== 링크 설정: 실제 집행 시 MMP(AppsFlyer OneLink / Adjust 등) 트래킹 링크로 교체 =====
+  var CONFIG = {
+    iosUrl: 'https://apps.apple.com/kr/app/id378084485',
+    androidUrl: 'https://play.google.com/store/apps/details?id=com.sampleapp',
+    // 앱이 설치된 복귀 고객은 딥링크로 바로 혜택 페이지 오픈
+    deepLink: 'baemin://event/welcome'
+  };
+
+  var params = new URLSearchParams(location.search);
+  var isShot = params.has('shot'); // 스크린샷/QA용: 애니메이션 없이 전체 노출
+  var utm = {
+    source: params.get('utm_source') || 'direct',
+    medium: params.get('utm_medium') || '',
+    campaign: params.get('utm_campaign') || 'welcome'
+  };
+  // 타겟 구분 (?seg=new | ?seg=dormant)
+  var seg = params.get('seg');
+  if (seg === 'dormant') {
+    document.getElementById('greeting').textContent = '오랜만이에요! 다시 와줘서 고마워요 💙';
+  }
+
+  function track(eventName, data) {
+    if (isShot) return;
+    var payload = Object.assign({ utm_source: utm.source, utm_medium: utm.medium, utm_campaign: utm.campaign, seg: seg || 'new' }, data || {});
+    if (window.gtag) window.gtag('event', eventName, payload);
+    if (window.fbq) window.fbq('trackCustom', eventName, payload);
+    if (window.dataLayer) window.dataLayer.push(Object.assign({ event: eventName }, payload));
+  }
+
+  function safeGet(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+  function safeSet(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+
+  var ua = navigator.userAgent || '';
+  var isIOS = /iPhone|iPad|iPod/i.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  var isAndroid = /Android/i.test(ua);
+  var isMobile = isIOS || isAndroid;
+
+  function withParams(url) {
+    var u = new URL(url);
+    u.searchParams.set('utm_source', utm.source);
+    u.searchParams.set('utm_campaign', utm.campaign);
+    var ref = safeGet('baemin_ref');
+    if (ref) u.searchParams.set('ref', ref);
+    return u.toString();
+  }
+
+  function goStore(store) {
+    location.href = withParams(store === 'ios' ? CONFIG.iosUrl : CONFIG.androidUrl);
+  }
+
+  // ===== QR (PC 유입): 이 페이지 주소를 담아 휴대폰에서 열면 기기별 스토어로 연결 =====
+  var qrUrl = (function () {
+    var u = new URL(location.href);
+    u.hash = '';
+    u.searchParams.delete('shot');
+    u.searchParams.set('utm_medium', 'pc_qr');
+    return u.toString();
+  })();
+  document.querySelectorAll('.js-qr').forEach(function (el) {
+    if (window.QRCode) {
+      new QRCode(el, { text: qrUrl, width: 256, height: 256, colorDark: '#1D1D1F', colorLight: '#FFFFFF', correctLevel: QRCode.CorrectLevel.M });
+    } else {
+      el.textContent = 'QR을 불러오지 못했어요. 스토어 버튼을 이용해 주세요.';
+      el.style.fontSize = '12px';
+    }
+  });
+  var modal = document.getElementById('qrModal');
+  function openQr() { modal.classList.add('open'); track('lp_qr_open'); }
+  function closeQr() { modal.classList.remove('open'); }
+  document.getElementById('qrClose').addEventListener('click', closeQr);
+  modal.addEventListener('click', function (e) { if (e.target === modal) closeQr(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeQr(); });
+
+  function openApp() {
+    if (!isMobile) { openQr(); return; }
+    // 모바일: 딥링크 시도 → 앱이 없으면 1.5초 후 스토어로
+    var timer = setTimeout(function () {
+      if (!document.hidden) goStore(isIOS ? 'ios' : 'android');
+    }, 1500);
+    document.addEventListener('visibilitychange', function onHide() {
+      if (document.hidden) { clearTimeout(timer); document.removeEventListener('visibilitychange', onHide); }
+    });
+    location.href = CONFIG.deepLink;
+  }
+
+  document.querySelectorAll('.js-download').forEach(function (el) {
+    el.addEventListener('click', function (e) {
+      e.preventDefault();
+      track('lp_cta_click', { position: el.dataset.pos });
+      openApp();
+    });
+  });
+  document.querySelectorAll('.js-store').forEach(function (el) {
+    el.addEventListener('click', function (e) {
+      e.preventDefault();
+      track('lp_store_click', { position: el.dataset.pos, store: el.dataset.store });
+      goStore(el.dataset.store);
+    });
+  });
+
+  // ===== 추천 코드: 친구가 공유한 링크(?ref=CODE)로 들어오면 자동 입력 =====
+  var refInput = document.getElementById('refCode');
+  var refMsg = document.getElementById('refMsg');
+  function applyRef() {
+    var code = refInput.value.trim().toUpperCase();
+    if (!/^[A-Z0-9]{6,12}$/.test(code)) {
+      refMsg.textContent = '영문·숫자 6~12자리 코드를 입력해 주세요.';
+      refMsg.className = 'code-msg err';
+      return;
+    }
+    safeSet('baemin_ref', code);
+    refMsg.textContent = '✓ 코드가 저장됐어요! 앱 가입 시 자동으로 적용돼요.';
+    refMsg.className = 'code-msg ok';
+    track('lp_ref_apply', { has_ref: true });
+  }
+  var urlRef = params.get('ref');
+  if (urlRef) { refInput.value = urlRef.toUpperCase(); applyRef(); }
+  else if (safeGet('baemin_ref')) { refInput.value = safeGet('baemin_ref'); }
+  document.getElementById('refApply').addEventListener('click', applyRef);
+  refInput.addEventListener('keydown', function (e) { if (e.key === 'Enter') applyRef(); });
+
+  // ===== 친구 초대 공유 =====
+  document.getElementById('shareBtn').addEventListener('click', function () {
+    track('lp_share_click');
+    var won = function (v) { return v.toLocaleString('ko-KR') + '원'; };
+    var shareData = {
+      title: '배민 웰컴 혜택',
+      text: '배민 처음이면 첫 주문 ' + won(BENEFITS.first) + ' 할인 + 배민클럽 첫 달 무료! 내 코드로 가입하고 첫 주문하면 우리 둘 다 ' + won(BENEFITS.friend) + ' 쿠폰 🎁',
+      url: qrUrl.replace('pc_qr', 'referral')
+    };
+    if (navigator.share) {
+      navigator.share(shareData).catch(function () {});
+    } else if (navigator.clipboard) {
+      navigator.clipboard.writeText(shareData.text + ' ' + shareData.url)
+        .then(function () { showToast('초대 문구가 복사됐어요!'); });
+    } else {
+      showToast('앱에서 내 추천 코드를 확인하고 공유해 보세요');
+    }
+  });
+
+  // ===== 하단 고정 CTA: 히어로 CTA 버튼이 안 보이면 노출 (소형 화면에선 첫 화면부터) =====
+  var sticky = document.getElementById('stickyCta');
+  var heroCta = document.getElementById('heroCta');
+  var finalSec = document.getElementById('final');
+  var heroCtaVisible = false, finalVisible = false;
+  function updateSticky() { sticky.classList.toggle('show', !heroCtaVisible && !finalVisible); }
+
+  if (isShot) {
+    document.documentElement.classList.add('shot');
+    document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+  }
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (en) { heroCtaVisible = en[0].isIntersecting; updateSticky(); }).observe(heroCta);
+    new IntersectionObserver(function (en) { finalVisible = en[0].isIntersecting; updateSticky(); }).observe(finalSec);
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) {
+          en.target.classList.add('in');
+          if (en.target.id) track('lp_section_view', { section: en.target.id });
+          io.unobserve(en.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+    sticky.classList.add('show');
+  }
+
+  var toastEl = document.getElementById('toast'), toastTimer;
+  function showToast(msg) {
+    toastEl.textContent = msg;
+    toastEl.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toastEl.classList.remove('show'); }, 2200);
+  }
+
+  track('lp_view');
+})();
+</script>
+</body>
+</html>

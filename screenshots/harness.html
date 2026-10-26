@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Device Harness</title>
+<style>
+  body { margin: 0; padding: 24px; background: #2b2f36; font-family: 'Malgun Gothic', sans-serif; color: #fff; }
+  h1 { margin: 0 0 18px; font-size: 22px; }
+  .row { display: flex; flex-wrap: wrap; gap: 28px; align-items: flex-start; }
+  .dev { flex: none; }
+  .dev p { margin: 0 0 8px; font-size: 14px; color: #cfd3da; }
+  .dev p b { color: #fff; }
+  .box { overflow: hidden; border-radius: 14px; border: 3px solid #555b66; background: #fff; }
+  iframe { border: 0; display: block; transform-origin: 0 0; }
+</style>
+</head>
+<body>
+<h1 id="ttl"></h1>
+<div class="row" id="row"></div>
+<script>
+  // ?mode=devices|sections  &label=텍스트
+  var q = new URLSearchParams(location.search);
+  var mode = q.get('mode') || 'devices';
+  var titles = { devices: ' — 해상도별 첫 화면', sections: ' — 360px 섹션별', desktop: ' — 데스크탑 1440px 섹션별 (50% 축소)' };
+  document.getElementById('ttl').textContent = (q.get('label') || '') + titles[mode];
+  var list = mode === 'desktop' ? ['', '#summary', '#first', '#club', '#invite', '#final'].map(function (h) {
+    return { n: h || '#hero', w: 1440, h: 900, s: 0.5, hash: h };
+  }) : mode === 'devices' ? [
+    { n: '피처폰급', w: 240, h: 320, s: 1 },
+    { n: '폴더블 커버 / 소형폰', w: 280, h: 653, s: 1 },
+    { n: '일반 안드로이드', w: 360, h: 780, s: 1 },
+    { n: '폴더블 펼침 / 태블릿', w: 690, h: 830, s: 0.6 },
+    { n: '데스크탑', w: 1440, h: 900, s: 0.5 }
+  ] : [
+    { n: '혜택 요약', w: 360, h: 780, s: 1, hash: '#summary' },
+    { n: '혜택01 첫주문', w: 360, h: 780, s: 1, hash: '#first' },
+    { n: '혜택02 배민클럽', w: 360, h: 780, s: 1, hash: '#club' },
+    { n: '혜택03 친구초대', w: 360, h: 780, s: 1, hash: '#invite' },
+    { n: '받는 방법', w: 360, h: 780, s: 1, hash: '#steps' },
+    { n: '마지막 CTA', w: 360, h: 780, s: 1, hash: '#final' }
+  ];
+  var row = document.getElementById('row');
+  list.forEach(function (d) {
+    var el = document.createElement('div');
+    el.className = 'dev';
+    el.innerHTML = '<p><b>' + d.n + '</b> · ' + d.w + '×' + d.h + (d.s < 1 ? ' (' + d.s * 100 + '% 축소)' : '') + '</p>';
+    var box = document.createElement('div');
+    box.className = 'box';
+    box.style.width = d.w * d.s + 'px';
+    box.style.height = d.h * d.s + 'px';
+    var f = document.createElement('iframe');
+    f.width = d.w; f.height = d.h;
+    f.style.transform = 'scale(' + d.s + ')';
+    f.src = '../index.html?shot=1' + (d.hash || '');
+    box.appendChild(f); el.appendChild(box); row.appendChild(el);
+  });
+</script>
+</body>
+</html>
